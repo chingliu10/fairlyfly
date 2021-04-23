@@ -1,0 +1,401 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #21BF73;
+}
+.filter, .menu, .add {
+    color: white;
+    cursor: pointer;
+    
+} 
+.filter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.menu{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.add {
+    position: fixed;
+    top: 20px;
+    right: 50%;
+    border: 1px solid whitesmoke;
+    transform: translateX(50%);
+    padding: 10px;
+    border: 5px solid white;
+    z-index: 700;
+}
+.content {
+    position: relative;
+    margin-top: 100px;
+    padding: 0 20px 20px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    z-index: 0;
+}
+
+.card{
+    position: relative;
+    background-color: white;
+    overflow-y: hidden;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition-property: height, width, opacity;
+    transition-duration: 1s, 1s, 3s;
+    z-index: 0;
+}
+
+.addCardTransition {
+    height: 250px;
+    width: 100%;
+    opacity: 1;
+}
+
+
+.card .innerCard {
+    position: relative;
+    padding: 20px;
+    z-index: 100;
+}
+
+.pin {  
+    color: white;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 1rem;
+    font-weight: .9;
+}
+
+.cleared {
+    background-color: #21BF73;
+}
+
+.pending {
+    background-color: red;
+}
+
+.edit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #ffefcf;
+    z-index: 1200;
+    padding: 5px;
+}
+
+.edit:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.edit i {
+    color: #21BF73;
+}
+
+.cardTitle {
+    font-size: 1.3rem;
+    margin-left: 20px;
+}
+
+.topInner{
+    background-color: #ffefcf;
+    padding: 20px;
+}
+
+hr{
+    margin-top: 20px;
+    background-color: #ffefcf;
+    height: 1px;
+}
+
+.innerContent{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 210px;
+    overflow-y: hidden;
+}
+
+.innerContent p {
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.popUpPosts{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 800;
+    justify-content: center;
+    align-items: center;
+}
+.newPost {
+    background-color: white;
+    padding: 20px;
+    width: 0vw;
+    height: 0;
+    opacity: 0;
+    transition: 1s ease-in-out;
+}
+
+.np {
+    width: 40vw;
+    height: auto;
+    opacity: 1;
+}
+
+.formControl {
+    margin-bottom: 20px;
+}
+
+.formControl label {
+    margin-bottom: 20px;
+}
+.formControl label, textarea, input {
+    display: block;
+    font-size: 1rem;
+} 
+
+textarea {
+    font-size: 1.2rem;
+}
+
+.formControl input, textarea, select {
+    padding: 10px;
+    width: 100%;
+    border-color: #ddd;
+}
+
+.formControl input {
+    border: none;
+    border: 1px solid #ddd;
+}
+
+.newPost hr{
+    background-color: #ddd;
+    margin-bottom: 20px;
+}
+.newPost  form button{
+    color: white;
+    padding: 20px;
+    border: 0;
+    display: inline-block;
+    width: 40%;
+    font-size: 1rem;
+}
+
+.save {
+    background-color: #21BF73;
+}
+.exitPost{
+    float: right;
+    background-color: red;
+}
+
+#loading{
+    display: none;
+    border-radius: 100%;
+    border:5px solid white;
+    background-color: white;
+}
+
+
+.contentLoader{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 50vh;
+    color: white;
+}
+
+.statusContent {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    z-index: 1200;
+    transition-property: top;
+    transition-duration: .7s;
+}
+
+.toggleStatusContent {
+    top : 0;
+}
+
+.clearedInterface, .pendingInterface {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.pendingInterface {
+    background-color: white;
+}
+
+.pendingBox {
+    width: 200px;
+    background-color: red;
+    padding: 2px;
+    transition-property: background-color;
+    transition-duration: 1.5s;
+}
+
+.pendingBox button {
+    padding: 30px;
+    display: inline-block;
+    width: 120px;
+    border-color: white;
+    background-color: white;
+    border: 1px solid white;
+    margin-left: 0;
+    transition-property: margin-left;
+    transition-duration: .4s;
+}
+
+
+.pendingBox button:hover{
+    cursor: pointer;
+}
+.backToPost{
+    position: absolute;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    top : 0;
+    right: 0;
+}
+
+
+.backToPost i {
+    color: white;
+}
+
+.pendingInterface .backToPost {
+    background-color: white;
+}
+.pendingInterface .backToPost i {
+    color: black;
+}
+
+
+.backToPost:hover {
+    cursor: pointer;
+}
+
+.deletePost {
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    width: 120px;
+    background-color: white;
+    color: red;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+
+.deletePost:hover {
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+}
+
+@media only screen and (max-width: 1280px) {
+    .content {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 968px) {
+    .content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen  and ( max-width : 576px ){
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .addCardTransition {
+        height: 230px;
+    }
+
+    .topInner {
+        padding: 10px;
+    }
+    .cardTitle {
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+
+    .pin {
+        padding: 5px;
+        font-size: .8rem;
+        font-weight: .8;
+    }
+
+    .innerContent p {
+        font-size: 1rem;
+    }
+
+    .edit {
+        padding: 10px;
+    }
+
+    .np {
+        width: 90vw;
+        height: 70vh;
+        opacity: 1;
+    }
+
+    .newPost h1{
+        font-size: 1.2rem;
+    }
+    .formControl {
+        margin-bottom: 10px;
+    }
+    
+    .formControl label {
+        margin-bottom: 10px;
+    }
+    .formControl label, textarea, input {
+        display: block;
+        font-size: .8rem;
+    } 
+    
+    textarea {
+        font-size: .8rem;
+    }
+    
+    .formControl input, textarea {
+        padding: 5px;
+    }
+
+    .newPost  form button{
+        color: white;
+        padding: 5px;
+        border: 0;
+        display: inline-block;
+        width: 40%;
+        font-size: .8rem;
+    }
+}

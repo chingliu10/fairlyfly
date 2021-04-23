@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9e6202f12f.js" crossorigin="anonymous"></script>
+    <title>FairlyFly</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="contentLoader">
+            loading....
+    </div>
+    <div class="content">
+    
+        
+   
+    </div>
+    <div class="DominantElements">
+        <div class="filter">
+            <i class="fas fa-filter fa-3x"></i>
+        </div>
+        <div class="add">
+            <i class="fas fa-plus fa-2x"></i>
+        </div>
+        <div class="menu">
+            <i class="fas fa-bars fa-3x"></i>
+        </div>
+    </div>
+    <div class="popUpPosts">
+
+        <div class="newPost">
+            <h1>Create New Post</h1>
+            <hr>
+            <form class="createPostForm">
+                <div class="formControl">
+                    <label>Title</label>
+                    <input type="text" name="postTitle" minlength="7" required>
+                </div>
+                <div class="formControl">
+                    <label >Category</label>
+                    <select name="category">
+                        <option>Movies</option>
+                        <option>Personal</option>
+                        <option>programming</option>
+                        <option>Career</option>
+                    </select>
+                </div>
+                <div class="formControl">
+                    <label >Explnation</label>
+                    <textarea id="" cols="30" rows="10" name="postExplanation" minlength="10" maxlength="50" required></textarea>
+                </div>
+              
+                <button type="submit" class="save">save</button>
+                <button style="width: 5%;margin-left: 5%" id="loading"></button>
+                <button type="button" class="exitPost">exit/cancel</button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/fetch.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

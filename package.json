@@ -1,0 +1,18 @@
+{
+  "name": "fairyfly",
+  "version": "1.0.0",
+  "description": "\"goals and activity app\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "\"chingliu\"",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.3"
+  }
+}
