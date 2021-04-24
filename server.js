@@ -3,11 +3,14 @@ let app = express()
 let port = process.env.PORT || 3000
 let mongoose = require("mongoose")
 const MyModel = require("./models/createpost")
+require('dotenv').config()
+
+let username = process.env.DB_USERNAME
+let password = process.env.DB_PASSWORD
 
 app.use(express.json())
 app.use(express.static("public"))
 app.set("view engine", "hbs")
-
 
 app.get("/", (req, res) => {
     res.render("fairlyfly")
@@ -19,7 +22,7 @@ app.get("/remastered", (req, res) => {
 
 app.get("/getposts", (req, res) => {
     
-    mongoose.connect("mongodb+srv://shagufa:checoperez@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority",
+    mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority`,
     { useUnifiedTopology: true , useNewUrlParser: true }, function ( err)  {
 
         if (err) {
@@ -47,7 +50,7 @@ app.post("/updatepost", (req, res) => {
 
     let post = req.body
     console.log(post)
-    mongoose.connect("mongodb+srv://shagufa:checoperez@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority",
+    mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority`,
     { useUnifiedTopology: true , useNewUrlParser: true })
 
     MyModel.findOneAndUpdate({ title : req.body.name}, { postStatus : "cleared" }, function (err, doc) {
@@ -65,7 +68,7 @@ app.post("/createPost", (req, res) => {
     
     let  {postTitle, postExplanation, status, category} = req.body
     console.log(status)
-    mongoose.connect("mongodb+srv://shagufa:checoperez@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority",
+    mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority`,
         { useUnifiedTopology: true , useNewUrlParser: true , useCreateIndex: true } 
     )
 
@@ -82,7 +85,7 @@ app.post("/createPost", (req, res) => {
 app.post("/deletepost", (req, res) => {
     console.log(req.body.post)
     
-    mongoose.connect("mongodb+srv://shagufa:checoperez@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority",
+    mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.qnnuu.mongodb.net/fairlyfly?retryWrites=true&w=majority`,
     { useUnifiedTopology: true , useNewUrlParser: true })
 
     MyModel.findOneAndDelete({ title: req.body.post } , function (err) {
